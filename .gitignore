@@ -1,0 +1,8 @@
+node_modules/ 
+.env 
+.env.* 
+dist/ 
+build/ 
+1.myAi/Backend/Services/auth/serviceAccountKey.json 
+.env 
+.env.* 
