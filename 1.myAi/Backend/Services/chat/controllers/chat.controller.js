@@ -10,9 +10,9 @@ export const createConversation=async (req,res) =>{
             userId:userId
         })
 
-        return req.status(200).json(conversation)
+        return res.status(200).json(conversation)
     } catch (error) {
-        return req.status(500).json({message:`create conversation error ${error}`})
+        return res.status(500).json({message:`create conversation error ${error}`})
     }
 }
 
@@ -25,9 +25,9 @@ export const getConversations=async (req,res) =>{
             userId:userId
         }).sort({updatedAt:-1})
 
-        return req.status(200).json(conversation)
+        return res.status(200).json(conversation)
     } catch (error) {
-        return req.status(500).json({message:`get conversation error ${error}`})
+        return res.status(500).json({message:`get conversation error ${error}`})
     }
 }
 
@@ -41,9 +41,9 @@ export const updateConversation=async (req,res) =>{
             title
         })
 
-        return req.status(200).json(conversation)
+        return res.status(200).json(conversation)
     } catch (error) {
-        return req.status(500).json({message:`update conversation error ${error}`})
+        return res.status(500).json({message:`update conversation error ${error}`})
     }
 }
 
@@ -56,9 +56,9 @@ export const saveMessage=async (req,res)=>{
             content,
             role
         })
-         return req.status(200).json(message)
+         return res.status(200).json(message)
     } catch (error) {
-        return req.status(500).json({message:`save message error ${error}`})
+        return res.status(500).json({message:`save message error ${error}`})
     }
 }
 
@@ -69,9 +69,9 @@ export const getMessages=async (req,res)=>{
         const messages=await Message.find({
             conversationId:req.params.conversationId
         }).sort({createdAt:-1})
-         return req.status(200).json(messages)
+         return res.status(200).json(messages)
     } catch (error) {
-        return req.status(500).json({message:`get messages error ${error}`})
+        return res.status(500).json({message:`get messages error ${error}`})
     }
 }
 

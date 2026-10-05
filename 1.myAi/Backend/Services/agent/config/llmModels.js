@@ -1,5 +1,8 @@
+import dotenv from "dotenv";
 import { ChatGroq } from "@langchain/groq"
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai"
+
+dotenv.config();
 
 const groq = new ChatGroq({
     model: "openai/gpt-oss-120b",
