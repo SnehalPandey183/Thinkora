@@ -17,7 +17,7 @@ const gemini = new ChatGoogleGenerativeAI({
     model: "gemini-2.5-flash"
 })
 
-export const getModel= async(agent)=>{
+export const getModel= (agent)=>{
     switch (agent) {
         case "chat":
             return groq;

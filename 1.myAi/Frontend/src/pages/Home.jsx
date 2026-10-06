@@ -32,10 +32,20 @@ function Home() {
         console.log(data)
       }
   return (
+
     <div className='h-screen flex bg-[#0d0f14] text-white overflow-hidden'>
-      <SideBar />
-      <ChatArea />
-      <Artifact />
+
+  <div className='w-[300px] shrink-0'>
+    <SideBar />
+  </div>
+
+  <div className='flex-1 min-w-0'>
+    <ChatArea />
+  </div>
+
+  <div className='w-[20%] shrink-0'>
+    <Artifact />
+  </div>
 
       {!userData && (<div className='fixed inset-0 z-50 flex items-center justify-center
         bg-black/60 backdrop-blur'>
