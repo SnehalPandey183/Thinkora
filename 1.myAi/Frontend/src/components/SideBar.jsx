@@ -16,13 +16,28 @@ function SideBar() {
     const [imageError, setImageError] = useState(false)
     const { conversations, selectedConversation } = useSelector(state => state.conversation)
     const { userData } = useSelector(state => state.user)
+    // useEffect(() => {
+    //     const getConv = async () => {
+    //         const data = await getConversations()
+    //         dispatch(setConversations(data))
+    //     }
+    //     getConv()
+    // }, [userData?._id])
+
+
     useEffect(() => {
-        const getConv = async () => {
-            const data = await getConversations()
-            dispatch(setConversations(data))
+    const getConv = async () => {
+        const data = await getConversations()
+
+        dispatch(setConversations(data))
+
+        if (data.length > 0) {
+            dispatch(setSelectConversation(data[0]))
         }
-        getConv()
-    }, [userData?._id])
+    }
+
+    getConv()
+}, [userData?._id, dispatch])
 
     const handleCreateConversation = async () => {
         const data = await createConversation()
@@ -45,7 +60,7 @@ function SideBar() {
                 <button className="flex items-center justify-center w-9 h-9 rounded-xl 
                 text-slate-500 hover:text-slate-200 hover:bg-white/[0.05] transition-colors 
                 duration-150 bg-transparent border-none cursor-pointer"
-                    onClick={handleCreateConversation}>
+                    onClick={()=>dispatch(setSelectConversation(null))}>
                     <Plus size={17} />
                 </button>
 
@@ -117,7 +132,8 @@ function SideBar() {
                     </span>
                     <button className='flex items-center justify-center w-7 h-7 rounded-lg text-slate-500 hover:text-slate-200
                    hover:bg-white/0.05 transition-colors duration-150 
-                   bg-transparent border-none cursor-pointer' onClick={handleCreateConversation}>
+                   bg-transparent border-none cursor-pointer' 
+                   onClick={()=>dispatch(setSelectConversation(null))}>
                         <PenSquare size={14} />
                     </button>
                 </div>
@@ -126,7 +142,8 @@ function SideBar() {
                     <button className='w-full flex items-center justify-center 
                 gap-2 text-sm font-medium text-white bg-gradient-to-br 
                 from-indigo-500 to-violet-700 rounded-xl py-[10px] border-none 
-                cursor-pointer hover:opacity-90 transition-opacity duration-150' onClick={handleCreateConversation}>
+                cursor-pointer hover:opacity-90 transition-opacity duration-150' 
+                onClick={()=>dispatch(setSelectConversation(null))}>
                         <Plus size={15} />
                         New Chat
                     </button>

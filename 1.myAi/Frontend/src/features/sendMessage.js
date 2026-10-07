@@ -1,14 +1,24 @@
 import React from 'react'
 import api from '../utils/axios'
 
+// async function sendMessage(payload) {
+//   try {
+//     const {data}= await api.post("/api/agent/chat",payload)
+//     return data
+//   } catch (error) {
+//     console.log(error)
+//     return null
+//   }
+// }
+
 async function sendMessage(payload) {
-  try {
-    const {data}= await api.post("/api/agent/chat",payload)
-    return data
-  } catch (error) {
-    console.log(error)
-    return null
-  }
+    try {
+        const { data } = await api.post("/api/agent/chat", payload)
+        return data
+    } catch (error) {
+        console.log("Agent API Error:", error.response?.data || error.message)
+        throw error
+    }
 }
 
 export default sendMessage
