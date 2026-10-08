@@ -27,7 +27,7 @@ function ChatArea() {
   }, [selectedConversation?._id, dispatch])
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col min-w-0">
       <Nav />
       <MessageList />
       <ChatInput />
